@@ -35,5 +35,5 @@ acc = (11 *n - failedCases) .* 100 ./ (11 * n);
 % Plot
 figure; plot(x, acc);
 xlabel('Signal-to-Noise Ratio (dB)'); ylabel('Accuracy (%)');
-title('Accuracy vs SNRminR'); ylim([80, 100]); grid on;
+title('Accuracy vs SNRminR'); grid on;
 legend(type(1), type(2), type(3),type(4),type(5));

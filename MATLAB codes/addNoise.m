@@ -16,18 +16,19 @@ if ~exist('SNR', 'var') || isempty(SNR)
 end
 
 % Warn if Signal-to-Noise Ratio is too low
-if SNR>10 %dB
+if SNR<10 %dB
    warning('Input SNR is too low! It should be higher than 10dB');
 end
 
-samp=length(s,1);
+samp=length(s);
 numChan = 1;
+bOut = (type ~= "brown");
 
 % Get Noise
-noise = dsp.ColoredNoise(type, samp, numChan, 'BoundedOutput', 'double');
+noise = dsp.ColoredNoise(type, samp, numChan, 'BoundedOutput', bOut);
 noise = noise();
-k = db2mag(-1*SNR-10) * max(abs(noise)); %adjust to the input SNR
-G = k/max(abs(noise));
+g = mean(abs(s))/db2mag(SNR); %adjust to the input SNR
+G = g/mean(abs(noise));
 noise = G*noise;
 
 sout = s + noise;

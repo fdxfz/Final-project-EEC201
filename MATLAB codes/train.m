@@ -25,7 +25,7 @@ if ~exist('plot_learning', 'var') || isempty(plot_learning)
     plot_learning = true;
 end
 if ~exist('N', 'var') || isempty(N)
-    N = 248; % Number of elements in Hamming window for stft()
+    N = 200; % Number of elements in Hamming window for stft()
 end
 if ~exist('M', 'var') || isempty(M)
     M = round(N*2/3); % overlap length for stft()
@@ -40,7 +40,7 @@ if ~exist('K', 'var') || isempty(K)
     K = 7;  % Number of Clusters
 end
 if ~exist('distortionThreshold', 'var') || isempty(distortionThreshold)
-    distortionThreshold = 0.05; 
+    distortionThreshold = 0.03; 
 end
 
 
@@ -50,7 +50,7 @@ x = preprocess(s,fs,M,N,p,q);
 %% LBG
 randidx = randperm(size(x, 1));
 InitialCentroid = x(randidx(1:K), :);
-[centroid, dmin, dmin_value, distortion] = LBG(x, InitialCentroid,...
+[centroid, dmin, distortion] = LBG(x, InitialCentroid,...
                                                distortionThreshold);
 
 %% Save to Table

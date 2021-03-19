@@ -6,7 +6,7 @@ if nargin == 1
 end
     
 if type == "train" || type == "test"
-        file = string( strcat('C:\2021Winter\EEC201\Final project\Data\', type, '\s', int2str(id), '.wav') );
+        file = string( strcat('C:\2021Winter\EEC201\Final_project_EEC201\Data\', type, '\s', int2str(id), '.wav') );
 else
     error('Unrecognized type: Must be train or test');
 end

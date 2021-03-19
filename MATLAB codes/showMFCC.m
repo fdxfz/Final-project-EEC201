@@ -43,10 +43,10 @@ timedomain(deleteZero(s11), fs11, 11)
 
 % Plots
 figure
-plot(c1(5,:)', c1(9,:)', '*')
+plot(c3(4,:)', c3(7,:)', '*')
 hold on
-plot(c7(5,:)', c7(9,:)', 'x')
-xlabel('mfcc-5'); ylabel('mfcc-9')
-legend("Speaker 1", "Speaker 7")
+plot(c9(4,:)', c9(7,:)', 'x')
+xlabel('mfcc-4'); ylabel('mfcc-7')
+legend("Speaker 3", "Speaker 9")
 grid on
 title("compare 2 speakers")
