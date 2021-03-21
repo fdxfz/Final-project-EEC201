@@ -5,13 +5,14 @@ if ~exist('noise', 'var') || isempty(noise)
     noise = false;
 end
 
-[c, t] = mfcc(deleteZero(s), fs, M, N, p);
+s1=deleteZero(s);
+[c, t] = mfcc(s1, fs, M, N, p);
 
 
 if noise
-   sPink = addNoise(deleteZero(s), 'pink');
-   sBrown = addNoise(deleteZero(s), 'brown');
-   sWhite = addNoise(deleteZero(s), 'white');
+   sPink = addNoise(s1, 'pink');
+   sBrown = addNoise(s1, 'brown');
+   sWhite = addNoise(s1, 'white');
 
    [cPink, t] = mfcc(sPink, fs, M, N, p);
    [cBrown, t] = mfcc(sBrown, fs, M, N, p);

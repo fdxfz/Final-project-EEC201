@@ -18,7 +18,7 @@ for j = 1:n
             for i = 1:11
                 [s, fs] = loadWAV(i); % get file
                 sn = addNoise(s, type(k), nl); % Add noise
-                [outSpkr, isValid] = test(sn, fs, codebook); % Get test output
+                outSpkr = test1(sn, fs, codebook); % Get test output
                 spkrRef = string(strcat('s', num2str(i))); % Get Reference Output
                 if outSpkr ~= spkrRef
                     fc = fc + 1; % Calculate failed cases per SNRminr
@@ -35,5 +35,5 @@ acc = (11 *n - failedCases) .* 100 ./ (11 * n);
 % Plot
 figure; plot(x, acc);
 xlabel('Signal-to-Noise Ratio (dB)'); ylabel('Accuracy (%)');
-title('Accuracy vs SNRminR'); grid on;
+title('Accuracy vs SNR'); grid on;
 legend(type(1), type(2), type(3),type(4),type(5));
